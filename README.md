@@ -19,7 +19,7 @@ Delavix is a PHP Framework which design for small until medium project. Delavix 
 1. Unzip the package.
 2. Put the delavix folders into your directory / upload into your server.
 
-###Configuraion
+###Configuration
 1. Open dir /app/Core/config.php 
 2. Do the configuration for your database, auth and path. 
 3. Finish. 
