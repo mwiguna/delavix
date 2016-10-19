@@ -43,4 +43,31 @@ class Auth {
       if($token == $_SESSION['token']) $_SESSION['token'] = NULL;
       else $this->redirect('error');
     }
+
+    public function bcrypt($value){
+      return password_hash($value, PASSWORD_BCRYPT);
+    }
+
+    public function verify($value, $hash){
+      return password_verify($value, $hash);
+    }
+
+    public function paginate(){
+      $page = $_SESSION['total'];
+      $url  = $_GET['url'];
+      $url  = explode("/", $url);
+      $last = count($url) - 1;
+
+      $before = $url[$last] - 1;
+      $after  = $url[$last] + 1;
+      if($url[$last] == 1) $before = 1;
+      if($url[$last] == $page) $after = $page; 
+
+      $link = "<a href='".$before."'>&laquo;</a>";
+      for($i = 1; $i<=$page; $i++){
+        $link .= '<a href="'.$i.'">'.$i.'</a>';
+      }
+      $link .= "<a href='".$after."'>&raquo;</a>";
+      return $link;
+    }
 }

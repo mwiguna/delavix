@@ -123,7 +123,7 @@ class Database {
   }
 
 
-  //---------------------- Relationship ------------------------//
+  //---------------------- JOIN ------------------------//
 
 
   public function join($table){
@@ -186,6 +186,11 @@ class Database {
 
 
   public function paginate($limit, $page){
+    $this->stmt = $this->connect->prepare($this->query);
+    $this->stmt->execute();
+
+    $_SESSION['total'] = $this->stmt->rowCount()/$limit;
+
     if($page != 1) $start = ($page - 1) * $limit;
     else $start = 0;
     $this->query .="LIMIT $start, $limit ";
