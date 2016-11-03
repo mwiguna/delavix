@@ -182,6 +182,17 @@ class Database {
     return $this;
   }
 
+  public function groupBy($index){
+    $this->query .= "GROUP BY $index ";
+    return $this;
+  }
+
+  public function having($index, $cond, $value){
+    $this->query .= "HAVING $index $cond $value ";
+    return $this;
+  }
+
+
   //-------------------- PAGINATE ---------------------//  
 
 
