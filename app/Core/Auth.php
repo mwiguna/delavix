@@ -29,16 +29,6 @@ class Auth {
 			header("Location: error");
 		}
 
-		public function middlewareAdmin(){
-			if(isset($_SESSION['role']) && ($_SESSION['role'] == 3 || $_SESSION['role'] == 2)) return true;
-			header("Location: error");
-		}
-
-		public function isAdmin(){
-			if(isset($_SESSION['role']) && ($_SESSION['role'] == 3 || $_SESSION['role'] == 2)) return true;
-			return false;
-		}
-
 		public function isSelf($id){
 			if(isset($_SESSION['id']) && $_SESSION['id'] == $id) return true;
 			return false;

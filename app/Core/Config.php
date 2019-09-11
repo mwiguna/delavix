@@ -30,7 +30,7 @@ class Config {
 
 	public function authConfig(){
 		$this->tableUser = 'users';
-		$this->fieldId   = 'igid';
+		$this->fieldId   = 'id';
 		$this->id        = (isset($_SESSION['id'])) ? $_SESSION['id'] : null;
 		return $this;
 	}
