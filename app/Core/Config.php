@@ -1,9 +1,7 @@
 <?php
 
 class Config {
-
 	private static $_instance = null;
-
 
 	/* Database Configuration [ MySql ]
 	*
@@ -13,46 +11,33 @@ class Config {
 	*/
 
 	public function dbConfig(){
-
-		$this->host  = "localhost";
-	    $this->db    = "dbName";
+	    $this->host  = "localhost";
+	    $this->db    = "";
 	    $this->user  = "root";
-	    $this->pass  = "root";
+	    $this->pass  = "";
+
 	    return $this;
 	}
 
-
  	/* Auth Configuration
  	*
- 	* tableUser is define of your table which become auth
- 	* fieldId is define of field which is Primary Key of tableUser
- 	* whereId is define of Session which is your declare when you are login,
- 	* and whereId will become index of fieldId
+ 	* tableUser is the name of your table which become auth
+ 	* fieldId is the field which is Primary Key of tableUser
+ 	* id is the name of Session which is your declare when you are login,
+ 	* and id will become index of fieldId as well.
  	*
  	*/
 
 	public function authConfig(){
-
 		$this->tableUser = 'users';
-		$this->fieldId   = 'id';
-		$this->whereId   = $_SESSION['id'];
+		$this->fieldId   = 'igid';
+		$this->id        = (isset($_SESSION['id'])) ? $_SESSION['id'] : null;
 		return $this;
-
-	}
-
-
-	/* Path Configuration 
-	* This is a path of your delavix path after your host
-	*
-	*/
-
-	public static function pathConfig(){
-		return $_SESSION['path'] = '/Delavix/';
 	}
 
 
 	// ------------------------------------------------------------- //
-	
+
 
 	/*
 	* The Configuration has finished.
@@ -68,8 +53,8 @@ class Config {
 	* https//github.com/mwiguna/delavix
 	*
 	*
-	* Delavix PHP Framework
-	* Copyright (c) 2016 Delavix
+	* Delavix PHP Framework v1.0.0
+	* Copyright (c) 2016 - 2019 Delavix
 	* Author : M. Wiguna Saputra
 	*
 	*
